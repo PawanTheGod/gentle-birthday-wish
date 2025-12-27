@@ -1,83 +1,64 @@
-import { useState, useEffect } from "react";
-import FloatingElements from "@/components/FloatingElements";
-import WelcomeStage from "@/components/WelcomeStage";
-import CelebrationStage from "@/components/CelebrationStage";
-import AffirmationStage from "@/components/AffirmationStage";
-import PlayfulStage from "@/components/PlayfulStage";
-import ClosureStage from "@/components/ClosureStage";
-
-type Stage = "welcome" | "celebration" | "affirmation" | "playful" | "closure";
+import { useState } from "react";
+import CursorTrail from "@/components/CursorTrail";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import ProgressHearts from "@/components/ProgressHearts";
+import BigRevealStage from "@/components/BigRevealStage";
+import CelebrationExplosion from "@/components/CelebrationExplosion";
+import SweetEnding from "@/components/SweetEnding";
 
 const Index = () => {
-  const [currentStage, setCurrentStage] = useState<Stage>("welcome");
-  const [visitedStages, setVisitedStages] = useState<Set<Stage>>(new Set(["welcome"]));
+  const [currentStage, setCurrentStage] = useState(0);
+  const [visitedStages, setVisitedStages] = useState<Set<number>>(new Set([0]));
 
-  const goToStage = (stage: Stage) => {
+  const goToStage = (stage: number) => {
     setCurrentStage(stage);
     setVisitedStages((prev) => new Set([...prev, stage]));
-    
-    // Smooth scroll to top when changing stages
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Progress indicator dots
-  const stages: Stage[] = ["welcome", "celebration", "affirmation", "playful", "closure"];
+  const totalStages = 3;
 
   return (
-    <main className="relative min-h-screen bg-background overflow-x-hidden">
-      {/* Gradient background overlay */}
+    <main className="relative min-h-screen bg-background overflow-hidden">
+      {/* Animated gradient background */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-50"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at 30% 20%, hsl(350 70% 92% / 0.3), transparent 50%), radial-gradient(ellipse at 70% 80%, hsl(280 50% 92% / 0.3), transparent 50%)"
+          background: `
+            radial-gradient(ellipse at 20% 20%, hsl(330 90% 95% / 0.8), transparent 50%),
+            radial-gradient(ellipse at 80% 80%, hsl(350 85% 92% / 0.6), transparent 50%),
+            radial-gradient(ellipse at 50% 50%, hsl(280 70% 95% / 0.4), transparent 60%),
+            linear-gradient(180deg, hsl(340 30% 98%), hsl(350 50% 96%))
+          `,
         }}
       />
 
-      {/* Floating decorative elements */}
-      <FloatingElements />
+      {/* Floating background elements */}
+      <AnimatedBackground />
 
-      {/* Progress indicator */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex gap-2">
-        {stages.map((stage, index) => (
-          <button
-            key={stage}
-            onClick={() => visitedStages.has(stage) && goToStage(stage)}
-            disabled={!visitedStages.has(stage)}
-            className={`w-2 h-2 rounded-full transition-all duration-500 ${
-              currentStage === stage
-                ? "bg-primary w-6 shadow-glow"
-                : visitedStages.has(stage)
-                ? "bg-primary/40 hover:bg-primary/60"
-                : "bg-border"
-            }`}
-            aria-label={`Go to stage ${index + 1}`}
-          />
-        ))}
-      </nav>
+      {/* Cursor trail effect */}
+      <CursorTrail />
+
+      {/* Progress hearts navigation */}
+      <ProgressHearts
+        currentStage={currentStage}
+        totalStages={totalStages}
+        onStageClick={goToStage}
+        visitedStages={visitedStages}
+      />
 
       {/* Stage containers */}
       <div className="relative z-10">
-        <WelcomeStage
-          isVisible={currentStage === "welcome"}
-          onContinue={() => goToStage("celebration")}
+        <BigRevealStage
+          isVisible={currentStage === 0}
+          onContinue={() => goToStage(1)}
         />
 
-        <CelebrationStage
-          isVisible={currentStage === "celebration"}
-          onContinue={() => goToStage("affirmation")}
+        <CelebrationExplosion
+          isVisible={currentStage === 1}
+          onContinue={() => goToStage(2)}
         />
 
-        <AffirmationStage
-          isVisible={currentStage === "affirmation"}
-          onContinue={() => goToStage("playful")}
-        />
-
-        <PlayfulStage
-          isVisible={currentStage === "playful"}
-          onContinue={() => goToStage("closure")}
-        />
-
-        <ClosureStage isVisible={currentStage === "closure"} />
+        <SweetEnding isVisible={currentStage === 2} />
       </div>
     </main>
   );
