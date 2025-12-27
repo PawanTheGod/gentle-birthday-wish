@@ -2,76 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Birthday Wish Design System - Soft, Warm, Gentle */
+/* Bold Girly Birthday - Hot Pink, Playful, Animated */
 
 @layer base {
   :root {
-    /* Core backgrounds */
-    --background: 30 50% 98%;
-    --foreground: 350 15% 25%;
+    /* Core - Cream white background */
+    --background: 340 30% 98%;
+    --foreground: 340 80% 20%;
 
-    /* Warm rose pink - primary celebration color */
-    --primary: 350 70% 75%;
-    --primary-foreground: 350 20% 20%;
-    --primary-glow: 350 80% 88%;
+    /* Hot Pink - Primary celebration */
+    --primary: 330 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 330 100% 75%;
 
-    /* Soft lavender - secondary accent */
-    --secondary: 280 50% 88%;
-    --secondary-foreground: 280 30% 25%;
+    /* Bubblegum - Secondary */
+    --secondary: 340 80% 75%;
+    --secondary-foreground: 340 90% 20%;
 
-    /* Warm peach - accent highlights */
-    --accent: 25 80% 88%;
-    --accent-foreground: 25 40% 25%;
+    /* Soft Gold - Accent */
+    --accent: 45 90% 65%;
+    --accent-foreground: 45 90% 20%;
 
     /* Muted tones */
-    --muted: 30 30% 94%;
-    --muted-foreground: 30 15% 45%;
+    --muted: 340 40% 94%;
+    --muted-foreground: 340 30% 45%;
 
-    /* Cards and surfaces */
-    --card: 30 40% 99%;
-    --card-foreground: 350 15% 25%;
+    /* Cards */
+    --card: 340 50% 99%;
+    --card-foreground: 340 80% 20%;
 
-    --popover: 30 40% 99%;
-    --popover-foreground: 350 15% 25%;
+    --popover: 340 50% 99%;
+    --popover-foreground: 340 80% 20%;
 
-    /* Borders and inputs */
-    --border: 350 30% 90%;
-    --input: 350 30% 92%;
-    --ring: 350 60% 80%;
+    /* Borders */
+    --border: 330 60% 90%;
+    --input: 330 60% 88%;
+    --ring: 330 90% 60%;
 
     /* Destructive */
-    --destructive: 0 65% 55%;
+    --destructive: 0 80% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
-    /* Custom birthday colors */
-    --rose: 350 70% 85%;
-    --lavender: 280 50% 88%;
-    --peach: 25 80% 88%;
-    --sky: 200 70% 90%;
-    --cream: 40 50% 96%;
-    --blush: 350 60% 92%;
+    /* Custom birthday pinks */
+    --hotpink: 330 90% 60%;
+    --bubblegum: 340 80% 75%;
+    --rose: 350 85% 70%;
+    --blush: 350 70% 85%;
+    --peach: 20 90% 80%;
+    --lavender: 280 70% 80%;
+    --gold: 45 90% 65%;
+    --cream: 40 60% 96%;
 
-    /* Gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(350 70% 92%), hsl(25 80% 92%), hsl(280 50% 92%));
-    --gradient-soft: linear-gradient(180deg, hsl(30 50% 98%), hsl(350 40% 96%));
-    --gradient-glow: radial-gradient(circle at center, hsl(350 70% 90% / 0.4), transparent 70%);
-
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(350 40% 70% / 0.15);
-    --shadow-glow: 0 0 40px hsl(350 60% 85% / 0.3);
-    --shadow-float: 0 8px 30px -8px hsl(350 40% 60% / 0.2);
-
-    /* Sidebar (keeping defaults) */
-    --sidebar-background: 30 50% 98%;
-    --sidebar-foreground: 350 15% 25%;
-    --sidebar-primary: 350 70% 75%;
-    --sidebar-primary-foreground: 350 20% 20%;
-    --sidebar-accent: 280 50% 88%;
-    --sidebar-accent-foreground: 280 30% 25%;
-    --sidebar-border: 350 30% 90%;
-    --sidebar-ring: 350 60% 80%;
+    /* Sidebar defaults */
+    --sidebar-background: 340 30% 98%;
+    --sidebar-foreground: 340 80% 20%;
+    --sidebar-primary: 330 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 340 80% 75%;
+    --sidebar-accent-foreground: 340 90% 20%;
+    --sidebar-border: 330 60% 90%;
+    --sidebar-ring: 330 90% 60%;
   }
 }
 
@@ -81,7 +73,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground font-body antialiased overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -90,73 +82,130 @@
 }
 
 @layer utilities {
-  /* Breathing animation */
-  .animate-breathe {
-    animation: breathe 4s ease-in-out infinite;
+  /* Bouncy pop animation */
+  .animate-pop {
+    animation: pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   }
 
-  /* Gentle float animation */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* Bounce loop */
+  .animate-bounce-slow {
+    animation: bounceSlow 2s ease-in-out infinite;
   }
 
-  /* Slow fade in */
-  .animate-fade-in-slow {
-    animation: fadeInSlow 1.5s ease-out forwards;
+  /* Sparkle pulse */
+  .animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
   }
 
-  /* Typing effect base */
-  .animate-type {
-    animation: typing 2s steps(40, end) forwards;
+  /* Float with rotation */
+  .animate-float-spin {
+    animation: floatSpin 4s ease-in-out infinite;
   }
 
-  /* Soft pulse glow */
-  .animate-glow-pulse {
-    animation: glowPulse 3s ease-in-out infinite;
+  /* Glow pulse */
+  .animate-glow {
+    animation: glowPulse 2s ease-in-out infinite;
   }
 
-  /* Drift animation for floating elements */
-  .animate-drift {
-    animation: drift 8s ease-in-out infinite;
+  /* Shake wiggle */
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out infinite;
   }
 
-  /* Stagger delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-700 { animation-delay: 700ms; }
-  .delay-1000 { animation-delay: 1000ms; }
+  /* Slide up with bounce */
+  .animate-slide-up-bounce {
+    animation: slideUpBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  /* Heart beat */
+  .animate-heartbeat {
+    animation: heartbeat 1.2s ease-in-out infinite;
+  }
+
+  /* Rainbow shimmer */
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+    background-size: 200% 100%;
+  }
 }
 
-@keyframes breathe {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.02); opacity: 1; }
+@keyframes pop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
-@keyframes fadeInSlow {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes floatSpin {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(10deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-25px) rotate(-10deg); }
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px hsl(350 60% 85% / 0.2); }
-  50% { box-shadow: 0 0 40px hsl(350 60% 85% / 0.4); }
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(330 90% 60% / 0.4), 0 0 40px hsl(330 90% 60% / 0.2);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(330 90% 60% / 0.6), 0 0 80px hsl(330 90% 60% / 0.4);
+    filter: brightness(1.1);
+  }
 }
 
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(10px, -15px) rotate(5deg); }
-  50% { transform: translate(-5px, -25px) rotate(-3deg); }
-  75% { transform: translate(-15px, -10px) rotate(2deg); }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes slideUpBounce {
+  0% { transform: translateY(100px); opacity: 0; }
+  60% { transform: translateY(-20px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.15); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Glossy glass effect */
+.glass-pink {
+  background: linear-gradient(135deg, hsl(330 90% 60% / 0.2), hsl(340 80% 75% / 0.3));
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(330 90% 60% / 0.3);
+}
+
+/* Gradient text */
+.text-gradient-pink {
+  background: linear-gradient(135deg, hsl(330 90% 60%), hsl(350 85% 70%), hsl(330 90% 60%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glossy button */
+.glossy-btn {
+  background: linear-gradient(180deg, hsl(330 90% 65%) 0%, hsl(330 90% 55%) 50%, hsl(330 90% 50%) 100%);
+  box-shadow: 
+    inset 0 1px 0 hsl(330 90% 80% / 0.5),
+    0 4px 15px hsl(330 90% 50% / 0.4),
+    0 8px 30px hsl(330 90% 50% / 0.2);
 }
