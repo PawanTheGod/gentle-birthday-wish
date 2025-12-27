@@ -1,0 +1,334 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Birthday Wish Design System - Soft, Warm, Gentle */
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background: 30 50% 98%;
+    --foreground: 350 15% 25%;
+
+    /* Warm rose pink - primary celebration color */
+    --primary: 350 70% 75%;
+    --primary-foreground: 350 20% 20%;
+    --primary-glow: 350 80% 88%;
+
+    /* Soft lavender - secondary accent */
+    --secondary: 280 50% 88%;
+    --secondary-foreground: 280 30% 25%;
+
+    /* Warm peach - accent highlights */
+    --accent: 25 80% 88%;
+    --accent-foreground: 25 40% 25%;
+
+    /* Muted tones */
+    --muted: 30 30% 94%;
+    --muted-foreground: 30 15% 45%;
+
+    /* Cards and surfaces */
+    --card: 30 40% 99%;
+    --card-foreground: 350 15% 25%;
+
+    --popover: 30 40% 99%;
+    --popover-foreground: 350 15% 25%;
+
+    /* Borders and inputs */
+    --border: 350 30% 90%;
+    --input: 350 30% 92%;
+    --ring: 350 60% 80%;
+
+    /* Destructive */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --radius: 1rem;
+
+    /* Custom birthday colors */
+    --rose: 350 70% 85%;
+    --lavender: 280 50% 88%;
+    --peach: 25 80% 88%;
+    --sky: 200 70% 90%;
+    --cream: 40 50% 96%;
+    --blush: 350 60% 92%;
+
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(350 70% 92%), hsl(25 80% 92%), hsl(280 50% 92%));
+    --gradient-soft: linear-gradient(180deg, hsl(30 50% 98%), hsl(350 40% 96%));
+    --gradient-glow: radial-gradient(circle at center, hsl(350 70% 90% / 0.4), transparent 70%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(350 40% 70% / 0.15);
+    --shadow-glow: 0 0 40px hsl(350 60% 85% / 0.3);
+    --shadow-float: 0 8px 30px -8px hsl(350 40% 60% / 0.2);
+
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 30 50% 98%;
+    --sidebar-foreground: 350 15% 25%;
+    --sidebar-primary: 350 70% 75%;
+    --sidebar-primary-foreground: 350 20% 20%;
+    --sidebar-accent: 280 50% 88%;
+    --sidebar-accent-foreground: 280 30% 25%;
+    --sidebar-border: 350 30% 90%;
+    --sidebar-ring: 350 60% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  /* Breathing animation */
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  /* Gentle float animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Slow fade in */
+  .animate-fade-in-slow {
+    animation: fadeInSlow 1.5s ease-out forwards;
+  }
+
+  /* Typing effect base */
+  .animate-type {
+    animation: typing 2s steps(40, end) forwards;
+  }
+
+  /* Soft pulse glow */
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  /* Drift animation for floating elements */
+  .animate-drift {
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-1000 { animation-delay: 1000ms; }
+
+  /* Idle animations */
+  .animate-breathe-idle {
+    animation: breathe-idle 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-idle {
+    animation: pulse-idle 4s ease-in-out infinite;
+  }
+
+  .animate-float-idle {
+    animation: float-idle 8s ease-in-out infinite;
+  }
+
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInSlow {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(350 60% 85% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(350 60% 85% / 0.4); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -15px) rotate(5deg); }
+  50% { transform: translate(-5px, -25px) rotate(-3deg); }
+  75% { transform: translate(-15px, -10px) rotate(2deg); }
+}
+
+/* Energetic drift for fast scrolling */
+@keyframes drift-energetic {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  12.5% { transform: translate(20px, -25px) rotate(15deg) scale(1.05); }
+  25% { transform: translate(15px, -40px) rotate(-10deg) scale(1.1); }
+  37.5% { transform: translate(-10px, -35px) rotate(12deg) scale(1.05); }
+  50% { transform: translate(-20px, -20px) rotate(-8deg) scale(1); }
+  62.5% { transform: translate(-15px, -5px) rotate(10deg) scale(0.95); }
+  75% { transform: translate(5px, -10px) rotate(-5deg) scale(1); }
+  87.5% { transform: translate(10px, -15px) rotate(8deg) scale(1.02); }
+}
+
+/* Gentle idle drift */
+@keyframes drift-idle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(3px, -5px) rotate(2deg); }
+  66% { transform: translate(-2px, -3px) rotate(-1deg); }
+}
+
+/* Idle breathing animation */
+@keyframes breathe-idle {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.03); 
+    opacity: 0.9;
+  }
+}
+
+/* Idle pulse */
+@keyframes pulse-idle {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Gentle float for idle state */
+@keyframes float-idle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gentle fade-in-up for stage content */
+@keyframes fade-in-up-gentle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up-gentle {
+    animation: fade-in-up-gentle 1.2s ease-out forwards;
+  }
+}
+
+/* Scroll snap utilities */
+html {
+  scroll-behavior: smooth;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-always {
+  scroll-snap-stop: always;
+}
+
+/* Luxury typography animation */
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    letter-spacing: 0.1em;
+  }
+  60% {
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Elegant glassmorphism */
+.glass-elegant {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Soft shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer-elegant {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
